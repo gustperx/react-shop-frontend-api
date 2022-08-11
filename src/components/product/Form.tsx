@@ -80,7 +80,7 @@ export const Form: FC<Props> = ({ handleForm, formValues, handleModal }) => {
                 handleChange={handleChange}
                 inputName="price"
                 inputValue={values.price}
-                activeError={errors.price}
+                activeError={errors.price as string}
               />
             </div>
             <div className="flex">
@@ -91,7 +91,7 @@ export const Form: FC<Props> = ({ handleForm, formValues, handleModal }) => {
                 handleChange={handleChange}
                 inputName="release_date"
                 inputValue={values.release_date}
-                activeError={errors.release_date}
+                activeError={errors.release_date as string}
               />
             </div>
             <div className="flex">

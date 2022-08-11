@@ -42,8 +42,8 @@ export const getDayMonthYearHoursMinutes = (unix: number) => {
 export const getYearMonthDay = (unix: number) => {
   const date = getJsDateFromUnix(unix);
 
-  let month = date.getMonth() + 1;
-  if (month < 10) {
+  let month = `${date.getMonth() + 1}`;
+  if (Number(month) < 10) {
     month = `0${month}`;
   }
 
@@ -57,4 +57,10 @@ export const createDateFormString = (date: string) => {
     Number(dateSplit[1]) - 1,
     Number(dateSplit[2])
   );
+};
+
+export const getDateUnix = (timestamp: string) => {
+  const date = createDateFormString(timestamp);
+  const unix = createUnixFromJsTime(date.getTime());
+  return unix;
 };

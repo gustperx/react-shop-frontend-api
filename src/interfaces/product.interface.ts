@@ -1,9 +1,9 @@
 export interface ProductAttributes {
   title: string;
-  price: string;
+  price: any;
   model: string;
   brand: string;
-  release_date: string;
+  release_date: any;
   stores: string[];
   description?: string;
   slug?: string;

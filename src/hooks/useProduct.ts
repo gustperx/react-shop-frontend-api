@@ -1,7 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
-import { createDateFormString, createUnixFromJsTime } from "../helpers";
+import {
+  createDateFormString,
+  createUnixFromJsTime,
+  getDateUnix,
+} from "../helpers";
 import { ProductPagination } from "../interfaces";
 import {
   ProductAttributes,
@@ -61,8 +65,8 @@ export const useProduct = () => {
   };
 
   const saveProduct = async (data: ProductAttributes) => {
-    const date = createDateFormString(data.release_date);
-    const unix = createUnixFromJsTime(date.getTime());
+    const date_parse = `${data.release_date}`;
+    const unix = getDateUnix(date_parse);
     data.release_date = unix;
     if (data.images) {
       data.images = await uploadFiles(data.images);
@@ -71,8 +75,8 @@ export const useProduct = () => {
   };
 
   const updateProduct = async (data: ProductModel) => {
-    const date = createDateFormString(data.release_date);
-    const unix = createUnixFromJsTime(date.getTime());
+    const date_parse = `${data.release_date}`;
+    const unix = getDateUnix(date_parse);
     data.release_date = unix;
     if (data.images) {
       data.images = await uploadFiles(data.images);
